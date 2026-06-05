@@ -3,6 +3,8 @@ use serde::{Deserialize, Serialize};
 
 pub mod reference;
 pub use reference::Reference;
+pub mod reference_simd;
+pub use reference_simd::ReferenceSIMD;
 
 const MAX_AMOUNT: f64 = 10_000.0;
 const MAX_INSTALLMENTS: f64 = 12.0;
@@ -15,6 +17,7 @@ const MAX_MERCHANT_AVG_AMOUNT: f64 = 10_000.0;
 const MISSING_LAST_TX: f64 = -1.0;
 
 pub const DIMENSIONS: usize = 14;
+pub const LANES: usize = 16;
 pub const SCALE: f64 = 10_000.0;
 pub const OFFSET: f64 = 1.0;
 
@@ -110,7 +113,7 @@ impl From<FraudScorePayload> for Vector {
                 .last_transaction
                 .as_ref()
                 .map_or(MISSING_LAST_TX, |tx| {
-                    ((Utc::now() - tx.timestamp).num_minutes() as f64 / MAX_MINUTES).clamp(0.0, 1.0)
+                    ((value.transaction.requested_at - tx.timestamp).num_minutes() as f64 / MAX_MINUTES).clamp(0.0, 1.0)
                 }),
             value
                 .last_transaction
