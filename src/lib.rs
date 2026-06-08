@@ -23,6 +23,7 @@ pub const OFFSET: f64 = 1.0;
 
 pub const VECTORS_PATH: &str = "references.vectors.u16";
 pub const LABELS_PATH: &str = "references.labels.bits";
+pub const INPUT_JSON: &str = "/home/matheus/projects/rinha-de-backend-2026/resources/references.json";
 
 pub type Vector = [u16; DIMENSIONS];
 

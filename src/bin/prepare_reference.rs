@@ -2,10 +2,7 @@ use serde::Deserialize;
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Write};
 
-use backend_showdown_2026::{DIMENSIONS, LABELS_PATH, OFFSET, SCALE, VECTORS_PATH};
-
-const INPUT_JSON: &str =
-    "/Users/baptistellamatheus/projects/rinha-de-backend-2026/resources/references.json";
+use backend_showdown_2026::{DIMENSIONS, LABELS_PATH, OFFSET, SCALE, VECTORS_PATH, INPUT_JSON};
 
 #[derive(Debug, Deserialize)]
 struct Record {
