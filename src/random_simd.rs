@@ -5,7 +5,7 @@ use crate::{DIMENSIONS, LABELS_PATH, VECTORS_PATH};
 
 const TOTAL_AMOUNT_VECTORS: u64 = 3_000_000;
 const VECTORS_PER_BLOCK: usize = 16;
-const VECTOR_SAMPLE: u64 = 16_384;
+const VECTOR_SAMPLE: u64 = 32_768;
 
 const BLOCK_SAMPLE: u64 = VECTOR_SAMPLE / VECTORS_PER_BLOCK as u64;
 const TOTAL_AMOUNT_BLOCKS: u64 = TOTAL_AMOUNT_VECTORS / VECTORS_PER_BLOCK as u64;
@@ -143,7 +143,7 @@ impl RandomSIMD {
 
             for i in 0..VECTORS_PER_BLOCK {
                 let idx = block_start + i;
-                let distance = distances[idx] as u64;
+                let distance = distances[i] as u64;
 
                 Self::insert_best(&mut best, distance, idx);
             }
