@@ -5,6 +5,8 @@ pub mod reference;
 pub use reference::Reference;
 pub mod reference_simd;
 pub use reference_simd::ReferenceSIMD;
+pub mod random_simd;
+pub use random_simd::RandomSIMD;
 
 const MAX_AMOUNT: f64 = 10_000.0;
 const MAX_INSTALLMENTS: f64 = 12.0;
