@@ -68,7 +68,7 @@ USER appuser
 # Copy the executable from the "build" stage.
 COPY --from=build /bin/server /bin/
 
-COPY references.labels.bits references.vectors.u16 /app/
+COPY references.labels.bits.simd references.vectors.u16.simd /app/
 
 # Expose the port that the application listens on.
 EXPOSE 3000

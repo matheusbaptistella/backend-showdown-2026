@@ -14,7 +14,7 @@ struct Record {
 }
 
 fn encode_value(value: f64) -> u16 {
-    ((value + OFFSET) * SCALE).round() as u16
+    ((value + OFFSET) * SCALE) as u16
 }
 
 fn main() {
